@@ -1,5 +1,7 @@
 FROM balenalib/rpi-raspbian:stretch
 
+COPY qemu-arm-static /usr/bin
+
 RUN apt-get update \
     && DEBIAN_FRONTEND=noninteractive apt-get -y upgrade \
     && DEBIAN_FRONTEND=noninteractive apt-get -y install strongswan iptables uuid-runtime ndppd openssl \
