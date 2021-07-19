@@ -2,17 +2,17 @@
 
 IKEv2 VPN server targeting ARMv6 for compatibility with Raspberry Pi 1-3 & Zero, with .mobileconfig generation for easy use with iOS & MacOS
 
-Recipe to build https://hub.docker.com/r/icet/ikev2-vpn-server-rpi/ Docker image
+Recipe to build https://hub.docker.com/r/exphat/ikev2-vpn-server-rpi/ Docker image
 
 ## Usage
 
 ### 1. Start the IKEv2 VPN Server
 
-    docker run --privileged -d --name ikev2-vpn-server --restart=always -p 500:500/udp -p 4500:4500/udp icet/ikev2-vpn-server-rpi
+    docker run --privileged -d --name ikev2-vpn-server --restart=always -p 500:500/udp -p 4500:4500/udp exphat/ikev2-vpn-server-rpi
 
 ### 2. Generate the .mobileconfig (for iOS / macOS)
 
-    docker run --privileged -i -t --rm --volumes-from ikev2-vpn-server -e "HOST=vpn1.example.com" icet/ikev2-vpn-server-rpi generate-mobileconfig > ikev2-vpn.mobileconfig
+    docker run --privileged -i -t --rm --volumes-from ikev2-vpn-server -e "HOST=vpn1.example.com" exphat/ikev2-vpn-server-rpi generate-mobileconfig > ikev2-vpn.mobileconfig
 
 *Be sure to replace `vpn1.example.com` with your own domain name and resolve it to you server's IP address. Simply put an IP address is supported as well (and enjoy an even faster handshake speed).*
 
@@ -30,7 +30,7 @@ Upon container creation, a *shared secret* was generated for authentication purp
 
 ## License
 
-Based on https://github.com/gaomd/docker-ikev2-vpn-server, which is copyright (c) 2016 Mengdi Gao and licensed under the [MIT License](LICENSE).
+Forked from https://github.com/iceton/docker-ikev2-vpn-server-rpi, which is based on https://github.com/gaomd/docker-ikev2-vpn-server, which is copyright (c) 2016 Mengdi Gao and licensed under the [MIT License](LICENSE).
 
 ---
 
